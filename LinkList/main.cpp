@@ -4,14 +4,8 @@
 int main()
 {
     LinkList ll;
-    ll.ListInsert(1, 11);
-    ll.ListInsert(2, 12);
-    ll.ListInsert(3, 13);
-    ll.ListInsert(4, 14);
-    ll.ListInsert(5, 15);
-    // ll.Display();
-    // ll.ReverseList();
-    // ll.Display();
-    ll.deleteList();
+    ll.CreateLinkList_H(5);
+    ll.Display();
+    std::cout << "size: " << ll.Length() << std::endl;
     return 0;
 }

@@ -11,9 +11,10 @@ class LinkList {
 public:
     LinkList();
     ~LinkList();
+    void CreateLinkList_R(int n);
+    void CreateLinkList_H(int n);
     bool ListInsert(int pos, int elem);
     bool ListDelete(int pos);
-    void deleteList(Node* node);
     int GetElem(int pos);
     int Find(int elem);
     void Display();

@@ -78,11 +78,28 @@ int LinkList::GetElem(int pos) {
     return p_curr->next->data;
 }
 
-void LinkList::deleteList(Node* node) {
-    Node* p_curr = node->next;
-    node->next = p_curr->next;
-    node->data = p_curr->data;
-    delete node;
+void LinkList::CreateLinkList_R(int n) {
+    Node* curr = m_head;
+    for (size_t i = 1; i <= n; i++)
+    {
+        Node* newnode = new Node;
+        newnode->data = i;
+        curr->next = newnode;
+        curr = newnode;
+        m_size++;
+    }
+}
+
+void LinkList::CreateLinkList_H(int n) {
+    Node* curr = m_head;
+    for (size_t i = 1; i <= n; i++)
+    {
+        Node* newnode = new Node;
+        newnode->data = i;
+        newnode->next = curr->next;
+        curr->next = newnode;
+        m_size++;
+    }
 }
 
 Node* LinkList::find(int pos) {
