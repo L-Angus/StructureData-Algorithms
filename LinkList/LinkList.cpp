@@ -114,19 +114,41 @@ Node* LinkList::find(int pos) {
     return p_curr;
 }
 
-void LinkList::ReverseList() {
-    if (m_size <= 1) {
-        return;
-    }
-    Node* p_curr = m_head->next->next;
-    m_head->next->next = nullptr;
+// void LinkList::ReverseList() {
+//     if (m_size <= 1) {
+//         return;
+//     }
+//     Node* p_curr = m_head->next->next;
+//     m_head->next->next = nullptr;
+//     Node* temp;
+//     while (p_curr != nullptr) {
+//         temp = p_curr;
+//         p_curr = p_curr->next;
+//         temp->next = m_head->next;
+//         m_head->next = temp;
+//     }
+// }
+
+Node* LinkList::ReverseList() {
+    Node* head = m_head;
+    Node* curr = head->next->next;
+    head->next->next = nullptr;
     Node* temp;
-    while (p_curr != nullptr) {
-        temp = p_curr;
-        p_curr = p_curr->next;
-        temp->next = m_head->next;
-        m_head->next = temp;
+    while (curr != nullptr) {
+        temp = curr;
+        curr = curr->next;
+        temp->next = head->next;
+        head->next = temp;
     }
+    return head;
+}
+
+void LinkList::Display(Node* node) {
+    while (node->next) {
+        node = node->next;
+        std::cout << node->data << " ";
+    }
+    std::cout << std::endl;
 }
 
 void LinkList::Display() {

@@ -18,9 +18,11 @@ public:
     int GetElem(int pos);
     int Find(int elem);
     void Display();
+    void Display(Node* node);
     int Length() const { return m_size; }
     bool Empty();
-    void ReverseList();
+    // void ReverseList();
+    Node* ReverseList();
 private:
     Node* find(int pos);
     int m_size;
