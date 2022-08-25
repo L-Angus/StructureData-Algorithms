@@ -36,6 +36,34 @@ T DoubleLinkList<T>::back(){
 }
 
 template<class T>
+void DoubleLinkList<T>::pop_front(){
+    if(headNode){
+        if(headNode->next == nullptr){
+            delete headNode;
+            headNode = nullptr;
+        }else{
+            Node<T>* temp = headNode->next;
+            headNode = temp->next;
+            delete temp;
+            temp = nullptr;
+        }
+    }
+    m_size--;
+}
+
+template<class T>
+void DoubleLinkList<T>::pop_back(){
+    Node<T>* newnode = headNode;
+    while(newnode->next){
+        newnode = newnode->next;
+    }
+    newnode->pre->next = nullptr;
+    delete newnode;
+    newnode = nullptr;
+    m_size--;
+}
+
+template<class T>
 void DoubleLinkList<T>::push_back(const T& value){
     Node<T>* p = new Node<T>;
     p->data = value;
@@ -95,7 +123,11 @@ int main()
     dblist.push_front("3");
     dblist.push_front("4");
     dblist.traversal();
-    std::cout << dblist.front() << std::endl;
-    std::cout << dblist.back() << std::endl;
+    dblist.pop_front();
+    dblist.traversal();
+    dblist.pop_back();
+    dblist.traversal();
+    // std::cout << dblist.front() << std::endl;
+    // std::cout << dblist.back() << std::endl;
     return 0;
 }
