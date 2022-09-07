@@ -23,6 +23,7 @@ public:
     bool Empty();
     // void ReverseList();
     Node* ReverseList();
+    Node* deleteNnode(int n);
 private:
     Node* find(int pos);
     int m_size;

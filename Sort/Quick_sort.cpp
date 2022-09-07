@@ -1,28 +1,38 @@
 #include <iostream>
+#include <vector>
 
-void quickSort(int arr[], int low, int high) {
-    int refvalue = arr[0];
-    while (low < high) {
-        while (arr[high] > refvalue && high > low) {
-            high--;
+void quick_sort(std::vector<int> &nums, int l, int r){
+    int first = l;
+    int last = r-1;
+    auto key = nums[first];
+    while(first < last){
+        while(first < last && nums[last] >= key) {
+            last--;
         }
-        std::swap(arr[high], arr[low]);
-        while (arr[low] < refvalue && low < high) {
-            low++;
+        nums[first] = nums[last];
+        while(first < last && nums[first] <= key) {
+            first++;
         }
-        std::swap(arr[low], arr[high]);
+        nums[last] = nums[first];
     }
+    nums[first] = key;
+    quick_sort(nums, l, first);
+    quick_sort(nums, first+1, r);
 }
+
+// void QuickSort(std::vector<int>& nums){
+//     quick_sort(nums, 0, nums.size());
+// }
+
 
 int main()
 {
-    int a[8] = { 70,50,30,20,10,70,40,60 };
-    int n = 8;
-    quickSort(a, 0, n - 1);
-    for (size_t i = 0; i < n; i++)
-    {
-        std::cout << a[i] << " ";
+    std::vector<int> data = {34,66,2,5,95,4,46,27};
+    // QuickSort(data);
+    quick_sort(data, 0, data.size());
+    for(auto &d : data){
+        std::cout << d << " ";
     }
-
+    std::cout << std::endl;
     return 0;
 }

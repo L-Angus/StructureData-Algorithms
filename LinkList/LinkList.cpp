@@ -128,6 +128,27 @@ Node* LinkList::find(int pos) {
 //         m_head->next = temp;
 //     }
 // }
+Node* LinkList::deleteNnode(int n){
+    std::cout << "n = " << n << std::endl;
+    int size = 0;
+    Node * tmp= m_head;
+    while (tmp->next){
+        tmp = tmp->next;
+        size++;
+    }
+    auto pos = size - n +1;
+    if (pos < 1) return nullptr;
+    Node *curr = m_head;
+    for (size_t i = 0; i < pos - 1; ++i)
+    {
+        curr = curr->next;
+    }
+    Node* temp = curr->next;
+    curr->next = temp->next;
+    delete temp;
+    return m_head;
+}
+
 
 Node* LinkList::ReverseList() {
     Node* head = m_head;
@@ -144,6 +165,7 @@ Node* LinkList::ReverseList() {
 }
 
 void LinkList::Display(Node* node) {
+    std::cout << "After Deleted List:" << std::endl;
     while (node->next) {
         node = node->next;
         std::cout << node->data << " ";
@@ -152,6 +174,7 @@ void LinkList::Display(Node* node) {
 }
 
 void LinkList::Display() {
+    std::cout << "Original Linklist: " << "\n";
     Node* p_curr = m_head;
     while (p_curr->next) {
         p_curr = p_curr->next;
