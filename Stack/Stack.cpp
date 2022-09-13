@@ -39,3 +39,31 @@ int Stack::Show(sqStack *S) {
     std::cout << std::endl;
     return OK;
 }
+
+bool Stack::StackEmpty(sqStack *S) {
+    if (S->top == -1) return true;
+    return false;
+}
+
+int Stack::GetTop(sqStack *S) {
+    if (S->top == -1){
+        return EMPTYSTACK;
+    }
+    auto e = S->data[S->top];
+    return e;
+}
+
+void Stack::ClearStack(sqStack *S) {
+    if(S->top == -1) return;
+    while (S->top != -1){
+        auto e = S->data[S->top];
+        S->top--;
+        StackSize--;
+    }
+}
+
+void Stack::DestoryStack(sqStack *S) {
+    if (!S) return;
+    delete S;
+    S = NULL;
+}

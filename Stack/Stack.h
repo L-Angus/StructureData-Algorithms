@@ -22,9 +22,13 @@ public:
 
     void InitStack(sqStack* S);
     int Push(sqStack *S, int e);
-    int size(sqStack *S) { return StackSize; }
+    int StackLength(sqStack *S) { return StackSize; }
     int Pop(sqStack* S);
     int Show(sqStack *S);
+    bool StackEmpty(sqStack* S);
+    int GetTop(sqStack *S);
+    void ClearStack(sqStack* S);
+    void DestoryStack(sqStack *S);
 private:
     int StackSize;
 };
